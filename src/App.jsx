@@ -4,7 +4,7 @@ function App() {
 
   return (
     <>
-      <div className="h-screen bg-black">
+      <div className="h-screen bg-black overflow-hidden">
         <div className="p-3">
           <Sidebar />
         </div>
