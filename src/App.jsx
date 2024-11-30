@@ -4,8 +4,10 @@ function App() {
 
   return (
     <>
-      <div className="">
-        <Sidebar />
+      <div className="h-screen bg-black">
+        <div className="p-3">
+          <Sidebar />
+        </div>
       </div>
     </>
   )
