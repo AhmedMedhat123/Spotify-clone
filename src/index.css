@@ -6,10 +6,18 @@
     box-sizing: border-box;
 }
 
+::-webkit-scrollbar {
+    display: none;
+}
+
 .btn {
     @apply bg-white font-semibold rounded-3xl text-[#242424] py-1 px-4 w-fit cursor-pointer;
 }
 
 .btn-secondary {
     @apply bg-black font-semibold rounded-3xl text-white py-1 px-4 w-fit cursor-pointer;
+}
+
+.card {
+    @apply min-w-[180px] p-2 px-2 rounded cursor-pointer hover:bg-[#ffffff26];
 }

@@ -6,7 +6,7 @@ function App() {
   return (
     <>
       <div className="h-screen bg-black">
-        <div className='h-screen text-white p-3 '>
+        <div className='h-screen text-white p-3 overflow-auto'>
           <div className="flex">
             <Sidebar />
             <Display />
