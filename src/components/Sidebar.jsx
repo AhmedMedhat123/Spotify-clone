@@ -29,14 +29,14 @@ const Sidebar = () => {
                     <div className="bg-[#242424] flex flex-col gap-3 mt-5 p-4 rounded">
                         <p className='font-bold'>Create your first playlist</p>
                         <p>it's easy we will help you</p>
-                        <div className='btn'>
+                        <div className='btn mt-3'>
                             Create Playlist
                         </div>
                     </div>
                     <div className="bg-[#242424] flex flex-col gap-3 mt-5 p-4 rounded">
                         <p className='font-bold'>Let's find some podcasts to follow</p>
                         <p>We will keep you update on new episodes</p>
-                        <div className='btn'>
+                        <div className='btn mt-3'>
                             Browse Products
                         </div>
                     </div>

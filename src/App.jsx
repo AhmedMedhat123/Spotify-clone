@@ -9,9 +9,7 @@ function App() {
         <div className='h-screen text-white p-3 '>
           <div className="flex">
             <Sidebar />
-
             <Display />
-
           </div>
           <Player />
         </div>
