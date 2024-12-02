@@ -4,7 +4,7 @@ import stackImage from '../assets/stack.png';
 const Sidebar = () => {
     return (
         <>
-            <div className='w-[25%]'>
+            <div className='w-[25%] hidden sm:block'>
                 <div className="bg-[#121212]  px-10 py-3 rounded-md">
                     <div className="flex items-center gap-2 ">
                         <FontAwesomeIcon icon={faHouse} />

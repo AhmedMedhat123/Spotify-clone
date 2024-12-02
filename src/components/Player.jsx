@@ -37,7 +37,7 @@ const Player = () => {
                     </div>
                 </div>
 
-                <div className='flex items-center gap-2 mt-8'>
+                <div className='hidden  lg:flex items-center gap-2 mt-8'>
                     <img className='w-4' src={PlaysImg} alt="" />
                     <img className='w-4' src={micImg} alt="" />
                     <img className='w-4' src={queueImg} alt="" />
