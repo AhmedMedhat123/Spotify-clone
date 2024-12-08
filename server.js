@@ -16,4 +16,4 @@ app.get("/", (req, res) => res.send("working"));
 app.listen(port, () => console.log(`Server working on ${port}`)); //starting express app
 
 //starting Routes
-app.use("/song", songRouter); //error /api
+app.use("api/song", songRouter);
