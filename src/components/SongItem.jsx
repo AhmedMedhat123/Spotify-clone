@@ -1,13 +1,24 @@
 import { useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPlay } from '@fortawesome/free-solid-svg-icons'
+import { useContext } from "react"
+import { PlayerContext } from "../context/PlayerContext"
 
 const SongItem = ({ id, name, image, desc }) => {
   const navigate = useNavigate();
+  const { playWithId } = useContext(PlayerContext)
+
   return (
-    <div onClick={() => navigate(`/song/${id}`)} className="card">
-      <img src={image} alt="" className="rounded w-40" />
-      <p className="font-bold mt-2 mb-1">{name}</p>
-      <p className="text-slate-200 text-sm">{desc}</p>
-    </div>
+    <>
+      <div onClick={() => navigate(`/song/${id}`)} className="relative group card">
+        <img src={image} alt="" className="rounded w-40" />
+        <p className="font-bold mt-2 mb-1">{name}</p>
+        <p className="text-slate-200 text-sm">{desc}</p>
+        <div onClick={(e) => { e.stopPropagation(); playWithId(id) }} className="hidden group-hover:block absolute top-36 left-36 transform -translate-x-1/2 -translate-y-1/2">
+          <FontAwesomeIcon icon={faPlay} className="fill-black bg-green-500 rounded-full size-5 p-3" color="black" />
+        </div>
+      </div >
+    </>
   );
 };
 
