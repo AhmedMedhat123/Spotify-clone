@@ -8,11 +8,12 @@ const Display = () => {
     const displayRef = useRef();
     const location = useLocation();
     const isAlbum = location.pathname.includes("album");
+    const isSong = location.pathname.includes("song");
     const albumId = isAlbum ? location.pathname.slice(-1) : "";
     const bgColor = albumsData[Number(albumId)].bgColor;
 
     useEffect(() => {
-        if (isAlbum) {
+        if (isAlbum || isSong) {
             displayRef.current.style.background = `linear-gradient(${bgColor},#121212)`;
         } else {
             displayRef.current.style.background = `#121212`;
