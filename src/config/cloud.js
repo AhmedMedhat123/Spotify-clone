@@ -3,7 +3,7 @@ const connectToCloud = async () => {
   await cloudinary.config({
     cloudName: process.env.CLOUD_NAME,
     apiKey: process.env.API_KEY,
-    apiSecret: process.env.apiSecret,
+    apiSecret: process.env.API_SECRET,
   });
 };
 export default connectToCloud;

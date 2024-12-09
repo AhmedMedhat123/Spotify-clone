@@ -1,8 +1,8 @@
 import express from "express"; // to create a server
-import cors from "cors";
 import "dotenv/config";
+import cors from "cors";
+import songRouter from "./src/routes/song.js";
 import initiateDBconnection from "./src/config/mongoDB.js";
-import songRouter from "./src/routes/songRoutes.js";
 
 const PORT_NUMBER = 1000;
 const app = express();
@@ -21,4 +21,4 @@ app.listen(
 app.get("/", (req, res) => res.send("get mehtod is working"));
 
 //starting Routes
-app.use("/api/song", songRouter);
+app.use("/song", songRouter);

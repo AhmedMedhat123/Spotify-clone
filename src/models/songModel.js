@@ -2,12 +2,12 @@ import mongoose from "mongoose";
 
 const songSchema = new mongoose.Schema({
   name: { type: String, required: true },
-  description: { type: String, required: true },
-  time: { type: String, required: true },
-  album_name: { type: String, required: true },
-  file: { type: String, required: true }, //error
+  desc: { type: String, required: true },
+  album: { type: String, required: true },
+  image: { type: String, required: false }, //temp
+  file: { type: String, required: false }, //temp
+  duration: { type: String, required: false }, //temp
 });
 
-const songModel = mongoose.models.song || mongoose.model("song", songSchema); //check if thier is a songs collection in the database if ! make a model ( model represents the songs collection )
-
+const songModel = mongoose.model("song", songSchema);
 export default songModel;
