@@ -1,0 +1,2 @@
+POST http://localhost:1000/song/add?name=test%20name&album=test%20album&desc=test%20desc
+//error
