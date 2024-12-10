@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { addSong, listSongs } from "../controllers/song.js";
+import { addSong, listSongs } from "../controllers/songController.js";
 import uploadHandler from "../middleware/multer.js";
 
 const songRouter = Router(); // for api creations
