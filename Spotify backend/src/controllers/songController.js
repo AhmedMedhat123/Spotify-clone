@@ -63,4 +63,13 @@ const listSongs = async (req, res) => {
   }
 };
 
-export { listSongs, addSong };
+const removeSong = async (req, res) => {
+  try {
+    await songModel.findByIdAndDelete(req.body.id);
+    res.json({ success: true, message: 'Song removed' });
+
+  } catch (error) {
+    res.json({ succes: false })
+  }
+}
+export { listSongs, addSong, removeSong };

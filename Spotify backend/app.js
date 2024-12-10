@@ -1,7 +1,7 @@
 import express from "express"; // to create a server
 import "dotenv/config";
 import cors from "cors";
-import songRouter from "./src/routes/song.js";
+import songRouter from "./src/routes/songRouter.js";
 import initiateDBconnection from "./src/config/mongoDB.js";
 
 const PORT_NUMBER = 1000;

@@ -4,6 +4,9 @@ import { albumsData, songsData } from "../assets/assets";
 import clockicon from "../assets/clock_icon.png";
 import { PlayerContext } from "../context/PlayerContext"
 import { useContext } from "react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPlus } from '@fortawesome/free-solid-svg-icons'
+
 const DisplaySong = () => {
   const { id } = useParams();
   const songData = songsData[id];
@@ -33,7 +36,7 @@ const DisplaySong = () => {
         <img className="m-auto w-4" src={clockicon} alt="" />
       </div>
       <hr />
-      <div onClick={() => playWithId(songData.id)} className="grid grid-cols-3 sm:grid-cols-4 gap 2 p-2 items-center text-[#a7a7a7] hover:bg-[#ffffff2b] cursor-pointer">
+      <div onClick={() => playWithId(songData.id)} className="grid grid-cols-3 sm:grid-cols-4 gap 2 p-2 items-center content-center text-[#a7a7a7] hover:bg-[#ffffff2b] cursor-pointer">
         <p className="text-white">
           <b className="mr-4 text-[#a7a7a7]">1</b>
           <img className="inline w-10 mr-5" src={songData.image} alt="" />
@@ -41,7 +44,16 @@ const DisplaySong = () => {
         </p>
         <p className="text-[15px]">{songData.album}</p>
         <p className="text-[15px] hidden sm:block">{songsData[0].year}</p>
-        <p className="text-[15px] text-center">{songData.duration}</p>
+        <div className="flex items-center gap-24">
+          <FontAwesomeIcon
+            icon={faPlus}
+            onClick={() => {
+              console.log('done')
+            }}
+            className="rounded-full p-[0.1rem] border-2 border-gray-400 size-3 hover:border-gray-100 hover:text-gray-100"
+          ></FontAwesomeIcon>
+          <div className="text-[15px] text-center">{songData.duration}</div>
+        </div>
       </div>
     </>
   );

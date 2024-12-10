@@ -5,6 +5,8 @@ import spotifyLogo from "../assets/spotify_logo.png"
 import clockicon from "../assets/clock_icon.png"
 import { useContext } from "react"
 import { PlayerContext } from "../context/PlayerContext"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPlus } from '@fortawesome/free-solid-svg-icons'
 const DisplayAlbum = () => {
     const { id } = useParams();
     const albumData = albumsData[id];
@@ -39,7 +41,13 @@ const DisplayAlbum = () => {
             <hr />
             {
                 songsData.map((item, index) => (
-                    <div onClick={() => playWithId(item.id)} key={index} className="grid grid-cols-3 sm:grid-cols-4 gap 2 p-2 items-center text-[#a7a7a7] hover:bg-[#ffffff2b] cursor-pointer">
+                    <div
+                        onClick={
+                            () => playWithId(item.id)
+                        }
+                        key={index}
+                        className="group grid grid-cols-3 sm:grid-cols-4 gap 2 p-2 items-center text-[#a7a7a7] hover:bg-[#ffffff2b] cursor-pointer"
+                    >
                         <p className="text-white">
                             <b className="mr-4 text-[#a7a7a7]">{index + 1}</b>
                             <img className="inline w-10 mr-5" src={item.image} alt="" />
@@ -47,7 +55,17 @@ const DisplayAlbum = () => {
                         </p>
                         <p className="text-[15px]">{albumData.name}</p>
                         <p className="text-[15px] hidden sm:block">4 days ago</p>
-                        <p className="text-[15px] text-center">{item.duration}</p>
+                        <div className="flex items-center gap-24">
+                            <FontAwesomeIcon
+                                icon={faPlus}
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    console.log('done')
+                                }}
+                                className="opacity-0  rounded-full p-[0.1rem] border-2 border-gray-100 text-gray-100 size-3 group-hover:opacity-100"
+                            ></FontAwesomeIcon>
+                            <p className="text-[15px] text-center">{item.duration}</p>
+                        </div>
                     </div>
 
                 ))

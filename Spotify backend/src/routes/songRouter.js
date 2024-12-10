@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { addSong, listSongs } from "../controllers/song.js";
+import { addSong, listSongs, removeSong } from "../controllers/songController.js";
 import uploadHandler from "../middleware/multer.js";
 
 const songRouter = Router(); // for api creations
@@ -12,6 +12,9 @@ songRouter.post(
   ]),
   addSong
 );
+
 songRouter.get("/list", listSongs);
+
+songRouter.post('/remove', removeSong);
 
 export default songRouter;

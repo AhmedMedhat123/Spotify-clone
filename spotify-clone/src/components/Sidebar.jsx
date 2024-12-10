@@ -2,6 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHouse, faMagnifyingGlass, faArrowRight, faPlus } from '@fortawesome/free-solid-svg-icons'
 import stackImage from '../assets/stack.png';
 import { useNavigate } from 'react-router-dom';
+import likedSongs from '../assets/likedSongs.jpg'
 const Sidebar = () => {
     const navigate = useNavigate();
 
@@ -28,6 +29,10 @@ const Sidebar = () => {
                             <FontAwesomeIcon icon={faArrowRight} />
                             <FontAwesomeIcon icon={faPlus} />
                         </div>
+                    </div>
+                    <div className="flex items-center gap-3 mt-5 rounded p-3 cursor-pointer hover:bg-zinc-800">
+                        <img src={likedSongs} className='size-11 rounded' alt="" />
+                        <p>liked Songs</p>
                     </div>
                     <div className="bg-[#242424] flex flex-col gap-3 mt-5 p-4 rounded">
                         <p className='font-bold'>Create your first playlist</p>
