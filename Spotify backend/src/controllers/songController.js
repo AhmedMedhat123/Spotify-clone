@@ -69,7 +69,7 @@ const removeSong = async (req, res) => {
     res.json({ success: true, message: 'Song removed' });
 
   } catch (error) {
-    res.json({ succes: false })
+    res.json({ succes: false, message: error.message })
   }
 }
 export { listSongs, addSong, removeSong };

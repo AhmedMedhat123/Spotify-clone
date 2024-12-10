@@ -3,6 +3,7 @@ import "dotenv/config";
 import cors from "cors";
 import songRouter from "./src/routes/songRouter.js";
 import initiateDBconnection from "./src/config/mongoDB.js";
+import albumRouter from "./src/routes/albumRouter.js";
 
 const PORT_NUMBER = 1000;
 const app = express();
@@ -22,3 +23,4 @@ app.get("/", (req, res) => res.send("get mehtod is working"));
 
 //starting Routes
 app.use("/song", songRouter);
+app.use('/album', albumRouter);
