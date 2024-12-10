@@ -1,1 +1,8 @@
-POST http://localhost:1000/song/add?name=test%20name&album=test%20albu&desc=test%20desc
+POST http://localhost:1000/song/add
+Content-Type: application/json
+
+{
+  "name":"test name with rest client",
+  "desc":"test desc with rest client",
+  "album":"test desc with rest client"
+}
