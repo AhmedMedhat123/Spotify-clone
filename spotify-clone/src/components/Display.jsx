@@ -4,6 +4,7 @@ import DisplayHome from "./DisplayHome";
 import DisplayAlbum from "./DisplayAlbum";
 import DisplaySong from "./DisplaySong";
 import { albumsData } from "../assets/assets";
+import CreatePlaylist from "./createPlaylist";
 const Display = () => {
     const displayRef = useRef();
     const location = useLocation();
@@ -30,6 +31,7 @@ const Display = () => {
                     <Route path="/" element={<DisplayHome />}></Route>
                     <Route path="/album/:id" element={<DisplayAlbum />}></Route>
                     <Route path="/song/:id" element={<DisplaySong />}></Route>
+                    <Route path="/create-playlist" element={<CreatePlaylist />}></Route>
                 </Routes>
             </div>
         </>

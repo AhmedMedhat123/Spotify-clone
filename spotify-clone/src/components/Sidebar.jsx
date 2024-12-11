@@ -1,15 +1,16 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHouse, faMagnifyingGlass, faArrowRight, faPlus } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHouse, faMagnifyingGlass, faArrowRight, faPlus } from '@fortawesome/free-solid-svg-icons';
 import stackImage from '../assets/stack.png';
 import { useNavigate } from 'react-router-dom';
-import likedSongs from '../assets/likedSongs.jpg'
+import likedSongs from '../assets/likedSongs.jpg';
+
 const Sidebar = () => {
     const navigate = useNavigate();
 
     return (
         <>
             <div className='w-[25%] hidden sm:block'>
-                <div className="bg-[#121212]  px-10 py-3 rounded-md">
+                <div className="bg-[#121212] px-10 py-3 rounded-md">
                     <div onClick={() => navigate('/')} className="flex items-center gap-2 cursor-pointer">
                         <FontAwesomeIcon icon={faHouse} />
                         Home
@@ -26,8 +27,17 @@ const Sidebar = () => {
                             <p>Your library</p>
                         </div>
                         <div className='flex gap-3 mt-2'>
-                            <FontAwesomeIcon icon={faArrowRight} />
-                            <FontAwesomeIcon icon={faPlus} />
+                            <FontAwesomeIcon
+                                icon={faArrowRight}
+                                className="cursor-pointer"
+                                onClick={() => navigate('/create-playlist')}
+                            />
+                            <FontAwesomeIcon
+                                icon={faPlus}
+                                className="cursor-pointer"
+                                onClick={() => navigate('/create-playlist')}
+                            />
+
                         </div>
                     </div>
                     <div className="flex items-center gap-3 mt-5 rounded p-3 cursor-pointer hover:bg-zinc-800">
@@ -37,7 +47,10 @@ const Sidebar = () => {
                     <div className="bg-[#242424] flex flex-col gap-3 mt-5 p-4 rounded">
                         <p className='font-bold'>Create your first playlist</p>
                         <p>it's easy we will help you</p>
-                        <div className='btn mt-3'>
+                        <div
+                            className='btn mt-3 cursor-pointer'
+                            onClick={() => navigate('/create-playlist')}
+                        >
                             Create Playlist
                         </div>
                     </div>
@@ -51,7 +64,8 @@ const Sidebar = () => {
                 </div>
             </div>
         </>
-    )
-}
 
-export default Sidebar
+    );
+};
+
+export default Sidebar;
