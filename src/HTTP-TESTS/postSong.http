@@ -1,0 +1,8 @@
+POST http://localhost:1000/song/add
+Content-Type: application/json
+
+{
+  "name":"name test",
+  "desc":"desc test44",
+  "album":"album test44"
+}
