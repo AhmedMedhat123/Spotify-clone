@@ -1,0 +1,8 @@
+POST http://localhost:1000/user/register
+Content-Type: application/json
+
+{
+  "name":"user name with rest client",
+  "email":"user desc with rest client",
+  "password":"user desc with rest client"
+}

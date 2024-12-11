@@ -2,6 +2,7 @@ import express from "express"; // to create a server
 import "dotenv/config";
 import cors from "cors";
 import songRouter from "./src/routes/songRouter.js";
+import userRouter from "./src/routes/userRoute.js"
 import initiateDBconnection from "./src/config/mongoDB.js";
 import albumRouter from "./src/routes/albumRouter.js";
 
@@ -24,3 +25,4 @@ app.get("/", (req, res) => res.send("get mehtod is working"));
 //starting Routes
 app.use("/song", songRouter);
 app.use('/album', albumRouter);
+app.use('/user', userRouter)
