@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { assets } from "../assets/assets";
 import axios from "axios";
 import { toast } from "react-toastify";
@@ -40,6 +40,22 @@ const AddSong = () => {
     }
     setLoading(false);
   };
+  const loadAlbumData = async () => {
+    try {
+      const response = await axios.get(`${url}/album/list`);
+      if (response.data.success) {
+        setAlbumData(response.data.albums);
+      } else {
+        toast.error("unable to load albums data");
+      }
+    } catch (error) {
+      toast.error("error occured");
+    }
+  };
+  useEffect(() => {
+    loadAlbumData();
+  }, []);
+
   return loading ? (
     <div className="grid place-items-center min-h-[80vh]">
       <div className="w-16 h-16 place-self-center border-4 border-gray-400 border-t-green-600 rounded-full animate-spin"></div>
@@ -115,6 +131,11 @@ const AddSong = () => {
           className="bg-transparent outline-green-500 border-2 border-gray-400 p-2.5 w-[150px]"
         >
           <option value="none">None</option>
+          {albumData.map((item, index) => (
+            <option key={index} value={item.name}>
+              {item.name}
+            </option>
+          ))}
         </select>
       </div>
       <button
