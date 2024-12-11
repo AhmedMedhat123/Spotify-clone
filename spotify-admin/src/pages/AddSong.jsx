@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { assets } from "../assets/assets";
 import axios from "axios";
 import { toast } from "react-toastify";
+export const url = "http://localhost:1000";
+
 const AddSong = () => {
   const [image, setImage] = useState(false);
   const [song, setSong] = useState(false);
@@ -15,14 +17,14 @@ const AddSong = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      const formData = new formData();
+      const formData = new FormData();
       formData.append("name", name);
       formData.append("desc", desc);
       formData.append("image", image);
       formData.append("audio", song);
       formData.append("album", album);
 
-      const response = await axios.post(`${url}/api/song/add`, formData);
+      const response = await axios.post(`${url}/song/add`, formData);
       if (response.data.success) {
         toast.success("Song added");
         setName("");
