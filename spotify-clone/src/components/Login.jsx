@@ -1,40 +1,47 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState,useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 import logo from "../assets/Spotify-Logo.wine.png";
 
 const Login = () => {
-    const [email, setEmail] = useState();
-    const [password, setPassword] = useState();
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [isLogin,setIsLogin] = useState(false);
     const navigate = useNavigate();
 
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        axios.post("http://localhost:3001/login", { email, password })
-            .then(result => {
-                console.log(result);
-                if (result.data === "Success") {
+        console.log("Submitting:", { email, password }); // Debugging
+
+        axios.post("http://localhost:1000/user/login", { email, password })
+            .then((response) => {
+                console.log("Response:", response); // Debugging
+                const { success, message } = response.data;
+                if (success) {
                     console.log("Login Success");
-                    alert("Login successful!");
-                    navigate("/home");
+                    setIsLogin(true);
+                    navigate("/");
                 } else {
-                    alert("Incorrect password! Please try again.");
+                    alert(message);
                 }
             })
-            .catch(err => console.log(err));
+            .catch((error) => {
+                console.error("Error:", error);
+                alert("Error connecting to server. Please try again later.");
+            });
     };
+
+    useEffect(() => {
+        if (isLogin) {
+            console.log("isLogin updated:", isLogin);
+            navigate("/"); // Navigate after state updates
+        }
+    }, [isLogin, navigate]);
 
     return (
         <div className="min-h-screen bg-black flex flex-col justify-center items-center text-white font-sans">
-            {/* Spotify Logo */}
-            <img
-                src={logo}
-                alt="Spotify Logo"
-                className="w-48 mb-8"
-            />
-
+            <img src={logo} alt="Spotify Logo" className="w-48 mb-8" />
             <div className="p-6 bg-green-500 rounded-lg w-96 text-center shadow-lg">
                 <h2 className="mb-6 font-bold text-xl">Log In to Spotify</h2>
                 <form onSubmit={handleSubmit}>
@@ -43,7 +50,8 @@ const Login = () => {
                             type="email"
                             placeholder="Enter your email"
                             className="w-full p-3 rounded-md text-black focus:outline-none focus:ring-2 focus:ring-green-700"
-                            onChange={(event) => setEmail(event.target.value)}
+                            onChange={(e) => setEmail(e.target.value)}
+                            value={email}
                             required
                         />
                     </div>
@@ -52,7 +60,8 @@ const Login = () => {
                             type="password"
                             placeholder="Enter your password"
                             className="w-full p-3 rounded-md text-black focus:outline-none focus:ring-2 focus:ring-green-700"
-                            onChange={(event) => setPassword(event.target.value)}
+                            onChange={(e) => setPassword(e.target.value)}
+                            value={password}
                             required
                         />
                     </div>
@@ -64,11 +73,8 @@ const Login = () => {
                     </button>
                 </form>
                 <p className="mt-4">
-                    Don&apos;t have an account? {" "}
-                    <Link
-                        to="/register"
-                        className="text-white underline font-bold hover:text-gray-200"
-                    >
+                    Don&apos;t have an account?{" "}
+                    <Link to="/register" className="text-white underline font-bold hover:text-gray-200">
                         Sign Up
                     </Link>
                 </p>
