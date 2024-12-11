@@ -1,26 +1,23 @@
-import { useState,useEffect } from "react";
+import { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import logo from "../assets/Spotify-Logo.wine.png";
+import { AuthContext } from "../context/AuthContext";
 
 const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [isLogin,setIsLogin] = useState(false);
+    const { isLogin, setIsLogin } = useContext(AuthContext); // Access context
     const navigate = useNavigate();
 
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        console.log("Submitting:", { email, password }); // Debugging
-
         axios.post("http://localhost:1000/user/login", { email, password })
             .then((response) => {
-                console.log("Response:", response); // Debugging
                 const { success, message } = response.data;
                 if (success) {
-                    console.log("Login Success");
-                    setIsLogin(true);
+                    setIsLogin(true); // Update global state
                     navigate("/");
                 } else {
                     alert(message);
@@ -31,13 +28,6 @@ const Login = () => {
                 alert("Error connecting to server. Please try again later.");
             });
     };
-
-    useEffect(() => {
-        if (isLogin) {
-            console.log("isLogin updated:", isLogin);
-            navigate("/"); // Navigate after state updates
-        }
-    }, [isLogin, navigate]);
 
     return (
         <div className="min-h-screen bg-black flex flex-col justify-center items-center text-white font-sans">
