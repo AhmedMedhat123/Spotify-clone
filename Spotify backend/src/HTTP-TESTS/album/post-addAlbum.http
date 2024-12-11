@@ -1,0 +1,8 @@
+POST http://localhost:1000/album/add
+Content-Type: application/json
+
+{
+  "name":"album name test",
+  "desc":"album desc test",
+  "image":"album image test"
+}
