@@ -7,5 +7,6 @@ const albumSchema = new mongoose.Schema({
   backgroundColor: { type: String, required: true },
 });
 
-const albumModel = mongoose.model("song", albumSchema);
+const albumModel = mongoose.model("album", albumSchema);
 export default albumModel;
+y;

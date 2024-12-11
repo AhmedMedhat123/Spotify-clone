@@ -1,8 +1,26 @@
 POST http://localhost:1000/song/add
-Content-Type: application/json
+Content-Type: multipart/form-data; boundary=boundary
 
-{
-  "name":"test name with rest client",
-  "desc":"test desc with rest client",
-  "album":"test desc with rest client"
-}
+--boundary
+Content-Disposition: form-data; name="name"
+
+test name with rest client
+--boundary
+Content-Disposition: form-data; name="desc"
+
+test desc with rest client
+--boundary
+Content-Disposition: form-data; name="album"
+
+test album with rest client
+--boundary
+Content-Disposition: form-data; name="audio"; filename="Assalamu_Alaika_ar.mp3"
+Content-Type: audio/mpeg
+
+< C:\Users\Osama medhat\Spotify Project\Spotify backend\src\assets\Assalamu_Alaika_ar.mp3
+--boundary
+Content-Disposition: form-data; name="image"; filename="tree.jpg"
+Content-Type: image/jpeg
+
+< C:\Users\Osama medhat\Spotify Project\Spotify backend\src\assets\tree.jpg
+--boundary--
