@@ -1,20 +1,16 @@
 import { v2 as cloudinary } from "cloudinary";
 import songModel from "../models/songModel.js";
-// import tree from "../assets/tree.jpg";
-// import asslam from "../assets/Assalamu_Alaika_ar.mp3";
-
+import { validationResult } from "express-validator";
 const addSong = async (req, res) => {
   try {
     const name = req.body.name;
     const desc = req.body.desc;
     const album = req.body.album;
 
-    // Validate if files exist
-    // if (!req.files || !req.files.audio || !req.files.image) {
-    //   return res
-    //     .status(400)
-    //     .json({ message: "Audio or Image file is missing!" });
-    // }
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(422).json({ errors: errors.array() });
+    }
 
     // const audio_file = req.files.audio[0];
     // const image_file = req.files.image[0];

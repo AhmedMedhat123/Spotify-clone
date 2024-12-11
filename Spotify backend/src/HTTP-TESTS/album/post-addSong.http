@@ -2,7 +2,7 @@ POST http://localhost:1000/song/add
 Content-Type: application/json
 
 {
-  "name":"album name test",
+  "name":"album ",
   "desc":"album desc test",
   "album":"album album test"
 }

@@ -1,5 +1,6 @@
 import { v2 as cloudinary } from "cloudinary"
 import albumModel from '../models/albumModel.js'
+import { validationResult } from "express-validator";
 
 const addAlbum = async (req, res) => {
     try {
@@ -15,6 +16,12 @@ const addAlbum = async (req, res) => {
             bgColor,
             image: imageUpload.secure_url
         }
+
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.status(422).json({ errors: errors.array() });
+        }
+
 
         const album = albumModel(albumData);
         await album.save();
