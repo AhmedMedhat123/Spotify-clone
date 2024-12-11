@@ -2,6 +2,6 @@ POST  http://localhost:1000/user/login
 Content-Type: application/json
 
 {
-  "email":"user desc with rest client",
-  "password":"user desc with rest client"
+  "email":"user2@gmail.com",
+  "password":"123123123"
 }
